@@ -257,8 +257,8 @@
 
     // 👉 CHALLENGE 9
     // 🧠 The function crazyTrimmer takes an array as its argument.
-    // 🧠 If the array has an even number of elements, the function returns it minus its last element.
-    // 🧠 If the number of elements is odd, the function returns the array minus its first and last elements.
+   
+    
     // 🧠 Examples of usage:
     // crazyTrimmer(['a', 'b', 'c']) // should return ['b']
     // crazyTrimmer(['a', 'b', 'c', 'd']) // should return ['a', 'b', 'c']
@@ -266,8 +266,48 @@
     // 🧠 Practice using pop and slice.
     // 🧠 Note that pop modifies the original array in place and returns the "popped" element, whereas slice gives us a brand new array.
     function crazyTrimmer(arr) {
+           // 🧠 If the array has an even number of elements, the function returns it minus its last element.
+          let result = [];
+          
+          for(let i = 0; i < arr.length; i++) {
+            
+                if(arr.length % 2 === 0) {
+                  let even = arr[i] - arr[-1];
+                  return even;
+                  result.push(even);
+               
 
+                // 🧠 If the number of elements is odd, the function returns the array minus its first and last elements.
+                if(arr.length % 2 !== 0) {
+                      let odd = arr[i] - arr[0] - arr[-1];
+                      return odd;
+                      result.push(odd);
+             }              
+          }
+                  return undefined;
+                        
+        }
+                      return result;
     }
+
+    /*
+    let result = [];
+
+  if (arr.length % 2 === 0) {
+    // If the array has an even number of elements, return it minus its last element.
+    for (let i = 0; i < arr.length - 1; i++) {
+      result.push(arr[i]);
+    }
+  } else {
+    // If the number of elements is odd, return the array minus its first and last elements.
+    for (let i = 1; i < arr.length - 1; i++) {
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
+}
+*/
 
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
