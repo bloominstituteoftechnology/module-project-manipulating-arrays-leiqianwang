@@ -32,6 +32,20 @@
     // 🧠 As you have done in the past, declare a variable before you start looping, to accumulate the result.
     function sumNumsFor(nums) {
 
+      let sum = 0;
+
+      for (let i = 0; i < nums.length; i++) {
+        let value = nums[i];
+
+        if (typeof value === "number") {
+          if (value === 13) {
+            return "I'm too superstitious!";
+          }
+          sum += value; // Accumulate the sum only for valid numbers.
+        }
+      }
+
+      return sum;
     }
 
     // 👉 CHALLENGE 2
@@ -42,6 +56,18 @@
     // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the characters of the string.
     function stripVowels(str) {
 
+      let result = ""; //Why tests failed when having space in " ", even the result is the same. 
+      for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+
+        if (char !== "a" && char !== "e" && char !== "i" && char !== "o" && char !== "u") {
+
+          result += char;
+        }
+      }
+
+      return result;
+
     }
 
     // 👉 CHALLENGE 3
@@ -49,8 +75,21 @@
     // 🧠 Examples of usage:
     // sumNumsWhile([1, 2, 3]) // should return 6
     // sumNumsWhile([1, 2, 13]) // should return "I'm too superstitious!"
-    function sumNumsWhile() {
+    function sumNumsWhile(nums) {
 
+      let count = 0;
+      let sum = 0;
+      while (count < nums.length) {
+        let value = nums[count];
+
+        if (typeof value === "number") {
+          if (value === 13) {
+            return "I'm too superstitious!";
+          }
+        }
+        sum += value;
+      }
+      count++;
     }
 
     // 👉 CHALLENGE 4
@@ -70,9 +109,41 @@
     // 🧠 There are many ways to solve this, but practice using a while loop.
     // 🧠 Work out using pen and paper how the round number and the lifePoints change after each round.
     // 🧠 As long as there are lifePoints, decrease lifePoints by round number, and increase round number by one.
-    function fightMonsters() {
+    function fightMonsters(lifePoints) {
 
+
+
+      let round = 1;
+
+      while (lifePoints > 0) {
+        lifePoits -= round;
+
+        if (lifePoints <= 0) {
+          return "You died in round 5";
+
+        }
+      }
+      round++;
     }
+
+
+    /*
+                        let round;
+                    let remainingLifePoints = lifePoints;
+
+                    for (round = 1; remainingLifePoints > 0; round++) {
+                    remainingLifePoints -= round;
+
+                    if (remainingLifePoints <= 0) {
+                    return `You died in round ${round}`;
+                    }
+                    }
+
+                    return "You shouldn't see this message.";
+                    }
+     }
+*/
+
 
     // 👉 CHALLENGE 5
     // 🧠 The function findEvenNums takes an array of integers as its argument.
@@ -81,8 +152,16 @@
     // findEvenNums([0, 1, 2, 3, 4]) // should return [0, 2, 4]
     // ❗ Notes:
     // 🧠 Use any kind of loop you'd like and the push method to populate the array of even numbers.
-    function findEvenNums() {
+    function findEvenNums(integers) {
 
+      result = [];
+      for (let i = 0; i < integers.length; i++) {
+        let int = integers[i];
+        if (int % 2 === 0) {
+          result.push(int);
+        }
+      }
+      return result;
     }
 
     // 👉 CHALLENGE 6
@@ -92,9 +171,22 @@
     // 🧠 Ages in the subarrays should appear in the same order they appeared in the original array.
     // 🧠 Examples of usage:
     // separateAges([31, 12, 25, 65, 84, 20]) // should return [[12, 20], [31, 25, 65, 84]]
-    function separateAges() {
+    function separateAges(ages) {
+                 let ageUnder21 = [];
+                 let ageEqualOlder21 = []
 
-    }
+              for (let i = 0; i < ages.length; i++) {
+                let age = ages[i];
+
+                if (age < 21) {
+                  ageUnder21.push(age);
+                } else {
+                  ageEqualOlder21.push(age);
+                }
+              }
+
+              return [ageUnder21, ageEqualOlder21];
+            }
 
     // 👉 CHALLENGE 7
     // 🧠 The function headAndTail takes an array as its argument.
@@ -103,9 +195,37 @@
     // 🧠 The "tail" prop contains an array holding the elements of the array after the first one.
     // 🧠 Examples of usage:
     // headAndTail([1, 2, 3]) // should return { head: 1, tail: [2, 3] }
-    function headAndTail() {
+    function headAndTail(arr) {
+        let obj = {};
+        
 
-    }
+      //  for( let i =0; i< arr.length; i++) {
+          if(arr.length > 0) {
+            obj.head = arr[0];
+            obj.tail = arr.slice(1);         
+          }else {
+             obj.head = undefined; // If the array is empty, set "head" to undefined
+             obj.tail = [];
+          }
+
+        return obj;
+          
+      }
+  
+           /*
+          if (arr.length === 0) {
+        // Handle the case when the array is empty
+               return { head: undefined, tail: [] };      //Notes:  how to test the empty array for the object in the console?
+           }
+
+        const head = arr[0]; // Get the first element of the array
+        const tail = arr.slice(1); // Get the elements after the first one
+
+        return { head, tail }; // Return an object with the specified properties
+        }
+            */
+
+
 
     // 👉 CHALLENGE 8
     // 🧠 The function nestedLoops takes an array of strings as its argument.
@@ -114,8 +234,25 @@
     // nestedLoops(['hello', 'goodbye']) // should return ['hEllO', 'gOOdbyE']
     // ❗ Notes:
     // 🧠 To capitalize a string you can use its toUpperCase method: "a".toUpperCase() returns "A"
-    function nestedLoops() {
+    function nestedLoops(str) {
 
+      let result = [];
+         
+        for(let i = 0; i < str.length; i++) {
+             let char = str[i];
+             let capitalizeChar = '';
+            for(let j = 0; j < str.length; j++) {
+
+              let chars = str[j];
+              if(char === "a" && char === "e" && char === "i" && char === "o" && char === "u") {
+               capitalizeChar += chars.toUpperCase();
+             }else {
+                 capitalizeChar += chars;
+             }
+            }
+                  result.push(capitalizeChar);
+      }
+                    return result;
     }
 
     // 👉 CHALLENGE 9
